@@ -13,15 +13,15 @@ class Achat extends Migration
      */
     public function up()
     {
-        Schema::create('Achat', function (Blueprint $table) { 
-            $table->bigIncrements('achat_id'); 
+        Schema::create('Achat', function (Blueprint $table) {
+            $table->bigIncrements('achat_id');
             $table->integer('user_id')->unsigned()->unique();
-            $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('User')->onDelete('cascade');
             $table->integer('produit_id')->unsigned()->unique();
-            $table->foreign('produit_id')->references('id')->on('Produit')->onDelete('cascade');
+            $table->foreign('produit_id')->references('produit_id')->on('Produit')->onDelete('cascade');
             $table->integer('quantite');
-            $table->timestamps(); 
-            });
+            $table->timestamps();
+        });
     }
 
     /**

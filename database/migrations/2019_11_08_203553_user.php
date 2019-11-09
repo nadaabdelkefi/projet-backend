@@ -14,7 +14,7 @@ class User extends Migration
     public function up()
     {
         Schema::create('User', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('user_id');
             $table->string('name');
             $table->string('password');
             $table->string('email');
