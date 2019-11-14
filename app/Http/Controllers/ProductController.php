@@ -33,11 +33,14 @@ class ProductController extends Controller
         return response()->json($produits, 200);
      }
 
-     public function deleteProduit(Request $request)
+     public function deleteProduit(Request $request ,$produit_id)
     {
+        $produit = $this->produitRepository->search($produit_id);
+
         if (!$produit) {
             return response()->json(['message' => 'Produit not found'], 404);
         }
+
         $produit->delete();
 
         return response()->json(['message' => 'Produit deleted'], 200);

@@ -34,10 +34,13 @@ class ProduitRepository
         return $produits;
     }
 
-    public function delete(Produit $produit_id)
+    public function search($produit_id)
     {
         $produit = Produit::find($produit_id);
+
         return $produit;
     }
+    
+   
 
 }
