@@ -41,6 +41,11 @@ class ProduitRepository
         return $produit;
     }
     
-   
+    public function delete($produit)
+    {
+        $produit->delete();
+
+        return $produit;
+    }
 
 }

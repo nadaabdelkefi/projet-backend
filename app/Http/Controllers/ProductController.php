@@ -33,7 +33,7 @@ class ProductController extends Controller
         return response()->json($produits, 200);
      }
 
-     public function deleteProduit(Request $request ,$produit_id)
+     public function deleteProduit($produit_id)
     {
         $produit = $this->produitRepository->search($produit_id);
 
@@ -41,7 +41,7 @@ class ProductController extends Controller
             return response()->json(['message' => 'Produit not found'], 404);
         }
 
-        $produit->delete();
+        $this->produitRepository->delete($produit);
 
         return response()->json(['message' => 'Produit deleted'], 200);
     }
