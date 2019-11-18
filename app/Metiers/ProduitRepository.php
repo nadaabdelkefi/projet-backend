@@ -27,4 +27,25 @@ class ProduitRepository
 
         return $produit;
     }
+
+    public function show(){
+        $produits = Produit::all();
+
+        return $produits;
+    }
+
+    public function search($produit_id)
+    {
+        $produit = Produit::find($produit_id);
+
+        return $produit;
+    }
+    
+    public function delete($produit)
+    {
+        $produit->delete();
+
+        return $produit;
+    }
+
 }

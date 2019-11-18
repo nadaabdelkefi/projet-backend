@@ -21,11 +21,29 @@ class ProductController extends Controller
             return response()->json(['error' => 'bad request'], 400);
         }
 
-
         $this->produitRepository->add($request);
 
         return response()->json(['message' => 'add product success']);
 
+    }
+
+    public function show(){
+        $produits = $this->produitRepository->show();
+        
+        return response()->json($produits, 200);
+     }
+
+     public function deleteProduit($produit_id)
+    {
+        $produit = $this->produitRepository->search($produit_id);
+
+        if (!$produit) {
+            return response()->json(['message' => 'Produit not found'], 404);
+        }
+
+        $this->produitRepository->delete($produit);
+
+        return response()->json(['message' => 'Produit deleted'], 200);
     }
 
 }
