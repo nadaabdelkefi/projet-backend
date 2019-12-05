@@ -23,3 +23,19 @@ Route::group(['prefix' => 'produit'], function () {
     Route::get('','ProductController@show');
     Route::delete('/{produit_id}','ProductController@deleteProduit');
 });
+
+Route::group(['prefix' => 'utilisateur'], function () {
+   
+    Route::post('register','UtilisateurController@register');
+    Route::post('login','UtilisateurController@login');
+    
+});
+
+// Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
+
+//     Route::post('login', 'AuthController@login');
+//     Route::post('logout', 'AuthController@logout');
+//     Route::post('refresh', 'AuthController@refresh');
+//     Route::post('me', 'AuthController@me');
+
+// });
