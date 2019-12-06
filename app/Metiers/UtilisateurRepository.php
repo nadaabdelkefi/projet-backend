@@ -52,8 +52,27 @@ class UtilisateurRepository
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-        
+
         return $token;
     }
+    public function show(){
+        $users = User::all();
+
+        return $users;
+    }
+
+    public function search($user_id)
+    {
+        $user = User::find($user_id);
+
+        return $user;
+    }
     
+    public function delete($user)
+    {
+        $user->delete();
+
+        return $user;
+    }
+
 }

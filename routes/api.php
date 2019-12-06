@@ -28,6 +28,8 @@ Route::group(['prefix' => 'utilisateur'], function () {
    
     Route::post('register','UtilisateurController@register');
     Route::post('login','UtilisateurController@login');
+    Route::get('','UtilisateurController@show');
+    Route::delete('/{user_id}','UtilisateurController@deleteUser');
     
 });
 
