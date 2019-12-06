@@ -48,4 +48,16 @@ class ProduitRepository
         return $produit;
     }
 
+    public function update($request, $produit)
+    {
+        
+        $produit->titre = $request->input("titre");
+        $produit->prix = $request->input("prix");
+        $produit->quantite = $request->input("quantite");
+
+        $produit->save();
+
+        return $produit;
+    }
+
 }
