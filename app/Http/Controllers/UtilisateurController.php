@@ -15,6 +15,25 @@ class UtilisateurController extends Controller
     {
         $this->utilisateurRepository = $utilisateurRepository;
     }
+
+    public function show(){
+        $users = $this->utilisateurRepository->show();
+        
+        return response()->json($users, 200);
+     }
+
+     public function deleteUser($user_id)
+    {
+        $user = $this->utilisateurRepository->search($user_id);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        $this->utilisateurRepository->delete($user);
+
+        return response()->json(['message' => 'User deleted'], 200);
+    }
     
     public function register(Request $request)
     {
@@ -48,5 +67,7 @@ class UtilisateurController extends Controller
             'expires_in'   => auth()->factory()->getTTL() * 60
         ]);
     }
+
+
 
 }
