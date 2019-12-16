@@ -50,18 +50,7 @@ class ProduitRepository
 
     public function update($request, $produit)
     {
-        $validator = Validator::make($request->all(), [
-            'produit_id' => 'required',
-            'titre' => 'required|string',
-            'prix' => 'required',
-            'quantite' => 'required'
-            
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors());
-        }
-
+        
         $produit->titre = $request->input("titre");
         $produit->prix = $request->input("prix");
         $produit->quantite = $request->input("quantite");

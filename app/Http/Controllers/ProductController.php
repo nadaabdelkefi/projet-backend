@@ -47,9 +47,16 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $produit_id)
-    {
+    { 
+        $validatedData = $request->validate([
+            'produit_id' => 'required',
+            'titre' => 'required|string',
+            'prix' => 'required',
+            'quantite' => 'required'
+            
+        ]);
+        
         $produit = $this->produitRepository->search($produit_id);
-
         if (!$produit) {
             return response()->json(['message' => 'Produit not found'], 404);
         }
