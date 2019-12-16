@@ -23,6 +23,8 @@ Route::group(['prefix' => 'produit'], function () {
     Route::put('/{produit_id}', 'ProductController@update');
     Route::get('','ProductController@show');
     Route::delete('/{produit_id}','ProductController@deleteProduit');
+    Route::get('/{produit_id}','ProductController@getProduit');
+
 });
 
 Route::group(['prefix' => 'utilisateur'], function () {

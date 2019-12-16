@@ -60,4 +60,12 @@ class ProductController extends Controller
 
     }
 
+    public function getProduit($produit_id){
+        $produit = $this->produitRepository->search($produit_id);
+        if (!$produit) {
+            return response()->json(['message' => 'Produit not found'], 404);
+        }
+        return response()->json($produit, 200);
+    }
+
 }
