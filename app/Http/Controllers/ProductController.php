@@ -46,4 +46,33 @@ class ProductController extends Controller
         return response()->json(['message' => 'Produit deleted'], 200);
     }
 
+    public function update(Request $request, $produit_id)
+    { 
+        $validatedData = $request->validate([
+            'produit_id' => 'required',
+            'titre' => 'required|string',
+            'prix' => 'required',
+            'quantite' => 'required'
+            
+        ]);
+        
+        $produit = $this->produitRepository->search($produit_id);
+        if (!$produit) {
+            return response()->json(['message' => 'Produit not found'], 404);
+        }
+
+        $this->produitRepository->update($request, $produit);
+
+        return response()->json(['message' => 'Produit updated'], 200);
+
+    }
+
+    public function getProduit($produit_id){
+        $produit = $this->produitRepository->search($produit_id);
+        if (!$produit) {
+            return response()->json(['message' => 'Produit not found'], 404);
+        }
+        return response()->json($produit, 200);
+    }
+
 }
