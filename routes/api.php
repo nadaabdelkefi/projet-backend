@@ -44,3 +44,7 @@ Route::group(['prefix' => 'utilisateur'], function () {
 //     Route::post('me', 'AuthController@me');
 
 // });
+
+Route::group(['prefix' => 'commande'], function () {
+    Route::post("/", "CommandeController@acheter");
+});
